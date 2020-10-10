@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+<style>
+    .texts {
+        font-family: 'Montserrat', sans-serif;
+        /* font-family: 'Roboto', sans-serif; */
+    }
+
+    .enter-button:hover {
+        background-color: white;
+        color: #dc3545;
+    }
+    .number-type::-webkit-outer-spin-button,
+    .number-type::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+.number-type[type=number] {
+  -moz-appearance: textfield;
+}
+</style>
+{% endblock %}
+
+{% block content %}
+
+<section class="p-4" style="background-color: rgb(228, 226, 226)">
+    <div class="container objects" data-object = {{objName}} >
+        <div class="row">
+            <div class="col-12 col-lg-6 py-5">
+                <div class="p-3">
+                    <p class="d-none name-of-object">{{objName}}</p>
+                    <h4 style="font-weight: bold;">Наши контакты</h4>
+                </div>
+                <div class="border p-4 text-left my-3 d-flex align-items-center justify-content-start" style="font-weight: bold;">
+                    <span class="texts">Название организации: <span class="text-danger"> {{contactInfo.fullname}}
+                        </span></span>
+                </div>
+                <div class="border p-4 text-left my-3 d-flex align-items-center justify-content-start" style="font-weight: bold;">
+                    <span class="texts">Наша почта: <span class="text-danger"> {{contactInfo.email}} </span></span>
+                </div>
+                <div class="border p-4 text-left my-3 d-flex align-items-center justify-content-start" style="font-weight: bold;">
+                    <span class="texts">Номер телефона: <span class="text-danger"> {{contactInfo.phone_number}}
+                        </span></span>
+                </div>
+                <div class="border p-4 text-left my-3 d-flex align-items-center justify-content-start" style="font-weight: bold;">
+                    <span class="texts">Наш адрес: <span class="text-danger"> {{contactInfo.location}} </span></span>
+                </div>
+            </div>
+            <div class="col-12 col-lg-6 py-2">
+                <form action="{% url 'main:contact-form' %}" class=" p-5 contact-form" method="POST">
+                    {% csrf_token %}
+                    {% for field in form %}
+                    <div class="form-group p-2">
+                        {{field}}
+                        {{field.errors}}
+                    </div>
+                    {% endfor %}
+                    <div class="form-group ">
+                        <input type="submit" value="Сделать заказ" class="btn btn-danger py-3 px-5 enter-button">
+                    </div>
+                    {% if messages %}
+                    <ul class="messages">
+                        {% for message in messages %}
+                        <li{% if message.tags %} class="{{ message.tags }}" {% endif %} style="list-style: none; color: red;font-weight: bold;">{{ message }}</li>
+                            {% endfor %}
+                    </ul>
+                    {% endif %}
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+{% endblock content %}
+{% block js %}
+
+<script>
+    function loadPage(){
+        var objName = document.querySelector('.name-of-object').innerText
+        console.log(objName)
+        document.querySelector('.theme-subject').value = objName
+    }
+    loadPage()
+</script>
+{% endblock %}

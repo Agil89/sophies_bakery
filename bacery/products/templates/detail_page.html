@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/detail-page.css' %}">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@700&family=Piazzolla:ital,wght@1,300&display=swap" rel="stylesheet"> 
+{% endblock%}
+{% block content %}
+
+<section>
+    <div class="container">
+        <div class="row pb-5">
+            <div class="col-12">
+
+            </div>
+            <div class="col-7">
+                <img class="main-image" src="{{object.main_image.url}}" alt="">
+            </div>
+            <div class="col-5">
+                <h1 class="object-name">{{object.name}}</h1>
+                <p class="text-muted object-short-description">({{object.short_description}})</p>
+                <div class="line-between"></div>
+                <div class="object-description">
+                    <span>{{object.long_description}}</span>
+                </div>
+                <div class="order-info">
+                  <span> Минимальный заказ :</span> 
+                  <span>{{object.unit}} {{object.name_of_unit}}</span>
+                </div>
+                <div class="price-info">
+                    <span>Цена : {{object.price}}</span>
+                </div>
+                <div class="ind-design d-flex flex-column">
+                    <span class="text-muted pb-4">*(<a href="{% url 'main:contact' %}?objectName={{object.name}}" style="font-weight: bold;"> Нажимайте сюда </a> что бы заказать здесь или свяжитесь с номером +777777777777 для заказа)</span>
+                    <span class="text-muted">*(Для особенного дизайна свяжитесь с нами.)</span>
+                </div>
+            </div>
+           
+        </div>
+
+    </div>
+</section>
+
+{% include 'includes/subscriber.html' %}
+{% endblock %}

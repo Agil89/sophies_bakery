@@ -1,0 +1,137 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+{% endblock %}
+{% block content %}
+
+<section>
+    <div class="container-fluid">
+        <div class="row for-bg pb-4">
+            <div class="rounded search-parent col-12 d-flex flex-column justify-content-center align-items-center p-5">
+                <div class="w-100 d-flex flex-column justify-content-center align-items-center">
+                    <div class=" active-cyan-3 active-cyan-4 mb-4 col-12 w-75 ">
+                    <h4 class="search-text">Все что вам нужно здесь...</h4>
+
+                    <form class="search-input-form" action="">
+                       <input autocomplete="off" class="form-control search-input" id="search" type="text" placeholder="Поиск..." aria-label="Search">
+                    <div class="empty w-100"></div>
+
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section>
+    <div class="container-fluid">
+        <h4 class="text-center p-5 content-h4">
+            <span class="span-under-content">
+                <span class="content-name">
+                    Торты
+                </span>
+            </span>
+        </h4>
+        <div class="container">
+            <div class="row align-items-center justify-content-center p-4" style="background-color: #fdc794">
+                {% for cake in cakes %}
+                <div class="col-12 col-lg-2 mb-4 mb-lg-0">
+                    <div class="for-linear">
+                    <div class="main-image-div" style="height: 200px;">
+                        <a href="{% url 'products_app:cake-detail' cake.slug %}"><img class="main-images w-100 h-100 rounded" src="{{cake.main_image.url}}" alt=""></a>
+                        <span style="font-weight: bold;font-size: 14px;">{{cake.name}}</span>
+                    </div>
+                </div>
+                </div>
+                {% endfor %}
+                <div class="all pt-5">
+                    <a href="{% url 'products_app:cakes' %}">Смотрите весь каталог здесь</a>
+                </div>
+            </div>
+        </div>
+        <h4 class="text-center p-5 content-h4">
+            <span class="span-under-content">
+                <span class="content-name">
+                    Десерти
+                </span>
+            </span>
+        </h4>
+        <div class="container">
+            <div class="row align-items-center justify-content-center p-4" style="background-color: #fdc794">
+                {% for desert in deserts %}
+                 <div class="col-12 col-lg-2 mb-4 mb-lg-0">
+                    <div class="for-linear">
+                    <div class="main-image-div" style="height: 250px;">
+                        <a href="{% url 'products_app:desert-detail' desert.slug %}"><img class="main-images w-100 h-100 rounded" src="{{desert.main_image.url}}" alt=""></a>
+                        <span style="font-weight: bold;font-size: 14px;">{{desert.name}}</span>
+                    </div>
+                </div>
+                </div>
+                {% endfor %}
+                <div class="all pt-5">
+                    <a href="{% url 'products_app:deserts' %}">Смотрите весь каталог здесь</a>
+                </div>
+            </div>
+        </div>
+        <h4 class="text-center p-5 content-h4">
+            <span class="span-under-content">
+                <span class="content-name">
+                    Восточные сладости
+                </span>
+            </span>
+        </h4>
+        <div class="container">
+            <div class="row align-items-center justify-content-center p-4" style="background-color: #fdc794">
+                {% for sweet in eastSweets %}
+                 <div class="col-12 col-lg-2 mb-4 mb-lg-0">
+                    <div class="for-linear">
+                    <div class="main-image-div" style="height: 250px;">
+                       <a href="{% url 'products_app:sweet-detail' sweet.slug %}"> <img class="main-images w-100 h-100 rounded" src="{{sweet.main_image.url}}" alt=""></a>
+                       <span style="font-weight: bold;font-size: 14px;">{{sweet.name}}</span>
+                    </div>
+                </div>
+                </div>
+                {% endfor %}
+                <div class="all pt-5">
+                    <a href="{% url 'products_app:sweets' %}">Смотрите весь каталог здесь</a>
+                </div>
+            </div>
+        </div>
+        <h4 class="text-center p-5 content-h4">
+            <span class="span-under-content">
+                <span class="content-name">
+                    Капкейки
+                </span>
+            </span>
+        </h4>
+        <div class="container pb-4">
+            <div class="row align-items-center justify-content-center p-4" style="background-color: #fdc794">
+                {% for cupcake in cupCakes %}
+                 <div class="col-12 col-lg-2 mb-4 mb-lg-0">
+                    <div class="for-linear">
+                    <div class="main-image-div" style="height: 250px;">
+                       <a href="{% url 'products_app:cupcake-detail' cupcake.slug %}"> <img class="main-images w-100 h-100 rounded" src="{{cupcake.main_image.url}}" alt=""></a>
+                       <span style="font-weight: bold;font-size: 14px;">{{cupcake.name}}</span>
+                    </div>
+                </div>
+                </div>
+                {% endfor %}
+                <div class="all pt-5">
+                    <a href="">Смотрите весь каталог здесь</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% include 'includes/subscriber.html' %}
+
+{% block js %}
+
+
+<script src="{% static 'js/main-page.js' %}"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+{% endblock %}
+{% endblock content %}

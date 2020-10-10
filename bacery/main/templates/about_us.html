@@ -1,0 +1,114 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<section class="py-4">
+    <div class="container">
+        <div class="row ">
+            <div class="col-12">
+                <h4 class="text-center py-3 for-fonts" style="font-family: 'Roboto', sans-serif;">We are an award
+                    winning Agency</h4>
+                <h6 class="text-center py-3 for-fonts" style="font-family: 'Roboto', sans-serif;">TAKE A LOOK AT OUR
+                    STORY</h6>
+            </div>
+
+            <div class="col-12 col-lg-6 bg-light">
+                <p class="for-fonts" style="font-family: 'Montserrat', sans-serif;line-height: 30px;">
+                    {{aboutUs.description}}</p>
+                    
+               
+            </div>
+            <div class="col-12 col-lg-6 bg-light">
+                <img class="rounded w-100" src="{{aboutUs.faq_icon.url}}" alt="">
+            </div>
+        </div>
+    </div>
+</section>
+<section class="">
+    <div class="container  py-4">
+        <div class="counters-divv " data-sweet="{{sweetCount}}" data-cupcake="{{cupcakeCount}}" data-cake="{{cakeCount}}" data-desert="{{desertCount}}">
+            <div class="row counters-div py-5"
+                style="background-image:linear-gradient(to bottom, rgba(64, 64, 66, 0.52), rgba(255, 255, 255, 0.73)),
+                url('https://curlytales.com/wp-content/uploads/2019/10/images-11-2-1280x720.jpg');background-repeat: no-repeat;background-position: center;">
+                <div class="col-12">
+                    <h1 class="p-3 text-center" style="font-family: 'Roboto', sans-serif;color: white;">Наши сладости</h1>
+                </div>
+                <div class="col-12">
+                    <h6 class="p-3 text-center" style="font-family: 'Roboto', sans-serif;color: white;">Все что вам нужно у нас</h6>
+                </div>
+                <div class="col-12 d-flex justify-content-center px-5">
+                    <span class="text-center px-5 py-3"
+                        style="font-family: 'Roboto', sans-serif;padding: 0,50px;color: white;">Lorem ipsum dolor sit
+                        amet, consectetur adipiscing elit. Fusce fringilla lectus nec diam auctor, ut fringilla diam
+                        sagittis. Quisque vel est id justo faucibus dapibus id a nibh</span>
+                </div>
+                <div class="col-12 col-md-3 d-flex flex-column align-items-center counterss">
+                    <img width="25%" src="{% static 'svg/sweet.svg' %}" alt="">
+                    <span class="demo-0 p-3"
+                        style="font-family: 'Montserrat', sans-serif;font-size: 24px;font-weight: bold;"></span>
+                    <span class="p-3"
+                        style="font-family: 'Montserrat', sans-serif;font-size: 24px;font-weight: bold;text-align: center;">Вочточные Сладости</span>
+                </div>
+                <div class="col-12 col-md-3 d-flex flex-column align-items-center counterss">
+                    <img width="25%" src="{% static 'svg/cake.svg' %}" alt="">
+                    <span style="font-family: 'Montserrat', sans-serif;font-size: 24px;font-weight: bold;"
+                        class="demo-1 p-3"></span>
+                    <span class="p-3"
+                        style="font-family: 'Montserrat', sans-serif;font-size: 24px;font-weight: bold;">Торты</span>
+                </div>
+                <div class="col-12 col-md-3 d-flex flex-column align-items-center counterss">
+                    
+                   
+                    <img width="25%" src="{% static 'svg/cupcake.svg' %}" alt="">
+                    <span class="demo-2 p-3"
+                        style="font-family: 'Montserrat', sans-serif;font-size: 24px;font-weight: bold;"></span>
+                    <span class="p-3"
+                        style="font-family: 'Montserrat', sans-serif;font-size: 24px;font-weight: bold;">Капкейки</span>
+                </div>
+                <div class="col-12 col-md-3 d-flex flex-column align-items-center counterss">
+                    <img width="25%" src="{% static 'svg/dessert.svg' %}" alt="">
+                    <span class="demo-2 p-3"
+                        style="font-family: 'Montserrat', sans-serif;font-size: 24px;font-weight: bold;"></span>
+                    <span class="p-3"
+                        style="font-family: 'Montserrat', sans-serif;font-size: 24px;font-weight: bold;">Десерти</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% include 'includes/subscriber.html' %}
+
+{% endblock %}
+
+{% block js %}
+<script src="{% static 'js/animationCounter.js' %}"></script>
+<script>
+    var sweetCount = $( ".counters-divv" ).data( "sweet" );
+    var cakeCount = $( ".counters-divv" ).data( "cake" );
+    var caupcakeCount = $( ".counters-divv" ).data( "cupcake" );
+    var desertCount = $( ".counters-divv" ).data( "desert" );
+
+    $('.demo-0').animationCounter({
+        start: 0,
+        end: sweetCount,
+        delay: 100
+    });
+
+    $('.demo-1').animationCounter({
+        start: 0,
+        end: cakeCount,
+        delay: 100
+    });
+    $('.demo-2').animationCounter({
+        start: 0,
+        end: caupcakeCount,
+        delay: 100
+    });
+    $('.demo-3').animationCounter({
+        start: 0,
+        end: desertCount,
+        delay: 100
+    });
+</script>
+
+
+{% endblock %}
