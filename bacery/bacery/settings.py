@@ -120,6 +120,9 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+DOMAIN = os.environ.get('VIRTUAL_HOST','localhost')
+DOMAIN = DOMAIN.split(',')[0]
+SITE_ADDRESS = f'http://{DOMAIN}'
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
