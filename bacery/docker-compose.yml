@@ -1,17 +1,17 @@
 version: '3'
 
 services:
-#   nginx-proxy:
-#     image: jwilder/nginx-proxy
-#     restart: "always"
-#     ports:
-#       - "80:80"
-#     volumes:
-#       - /var/run/docker.sock:/tmp/docker.sock:ro
-#       - ./nginx/vhost/:/etc/nginx/vhost.d:ro
-#       - ./nginx/conf.d/client_max_body_size.conf:/etc/nginx/conf.d/client_max_body_size.conf:ro
-#       - ./static/:/code/static/
-#       - ./media/:/code/media/
+  nginx-proxy:
+    image: jwilder/nginx-proxy
+    restart: "always"
+    ports:
+      - "80:80"
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+      - ./nginx/vhost/:/etc/nginx/vhost.d:ro
+      - ./nginx/conf.d/client_max_body_size.conf:/etc/nginx/conf.d/client_max_body_size.conf:ro
+      - ./static/:/code/static/
+      - ./media/:/code/media/
 
   postgres:
     image: postgres
@@ -19,10 +19,7 @@ services:
       - ./postgresdb/:/var/lib/postgresql/data
     ports:
       - 5432:5432
-    environment:
-      POSTGRES_DB: 'bacery_db_name'
-      POSTGRES_USER: 'bacery_name'
-      POSTGRES_PASSWORD: 'sofi123'
+    env_file: ./.envv
 
   web:
     build: .

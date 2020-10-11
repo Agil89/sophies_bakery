@@ -1,4 +1,4 @@
-POSTGRES_DB=bacery_name
+POSTGRES_DB=bacery_db_name
 POSTGRES_USER=bacery_name
 POSTGRES_PASSWORD=sofi123
 POSTGRES_HOST=postgres
