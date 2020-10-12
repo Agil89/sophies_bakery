@@ -67,7 +67,7 @@ document.querySelector('.max-price').addEventListener('input', (e) => {
 function loadAllData(data) {
     console.log(data)
     $.ajax({
-        url: 'http://localhost:8000/api/v1.0/products/cakes/',
+        url: 'http://104.154.157.225/api/v1.0/products/cakes/',
         method: "GET",
         data: data,
         success: function (response) {
