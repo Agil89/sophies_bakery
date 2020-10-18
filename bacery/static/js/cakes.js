@@ -4,23 +4,6 @@ const all_data = {
 }
 
 
-// document.onclick = function (e) {
-//     if (e.target.classList.contains('checked-inputs')) {
-//         var cake_features= new Array()
-//         document.querySelectorAll('.checked-inputs').forEach(function (e) {
-//                 if (e.checked == true) {
-//                     var cake_feature = e.closest('.d-flex').querySelector('.choose-types').innerText
-//                     cake_features.push(cake_feature)
-                    
-//                 }
-//         })
-//         all_data['cake_features'] = cake_features
-//         loadAllData(all_data)
-
-//     }
-        
-
-// }
 
 
 document.onclick = function (e) {
@@ -67,7 +50,7 @@ document.querySelector('.max-price').addEventListener('input', (e) => {
 function loadAllData(data) {
     console.log(data)
     $.ajax({
-        url: 'http://soffiabakery.ru/api/v1.0/products/cakes/',
+        url: 'http://104.154.157.225/api/v1.0/products/cakes/',
         method: "GET",
         data: data,
         success: function (response) {
