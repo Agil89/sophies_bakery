@@ -36,7 +36,7 @@ function loadAllData(data) {
     console.log(data)
     console.log('heloooooooooooooooooooooooooooo')
     $.ajax({
-        url: 'http://104.154.157.225/api/v1.0/products/sweets/',
+        url: 'http://soffiabakery.ru/api/v1.0/products/sweets/',
         method: "GET",
         data: data,
         success: function (response) {
